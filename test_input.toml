@@ -1,0 +1,63 @@
+[paths]
+input = '/home/wecapstor3/capn/mppi132h/GNNs/test/weighting/full_files/data_concatenated_all.h5'
+output = '/home/wecapstor3/capn/mppi132h/GNNs/test/weighting/output/fin_2/test_1.h5'
+#logs = '/home/hpc/capn/mppi132h/logs/sample_weights/1'
+
+
+
+[ranges]
+#Ranges of the Dataset to build the new file from
+ranges = [
+    ['energy', 1, 100],
+    ['coszenith', -1, 1]
+]
+
+[datasets]
+
+unions = [
+    ['lukas_flat'],
+    ['standard_v7.2','standard_v7.1']
+]
+
+behaviour = ['Balanced eventN',[],
+    [],
+    ['AsIs',[]]
+]
+
+# unions = ['lukas_flat']
+
+# behaviour = ['AsIs',[]]
+
+[interactions]
+
+unions = [
+    [
+        [12, "CC"],[-12, "CC"]
+    ],
+    [
+        [14, "CC"],[-14, "CC"]
+    ],
+    [
+        [14, "NC"],[-14, "NC"]
+    ],
+    [
+        [16, "CC"],[-16, "CC"]
+    ]
+]
+
+behaviour = ['Balanced',[],
+    ["Physical",[]],
+    ["Physical",[]],
+    ["Physical",[]],
+    ["Physical",[]]
+]
+
+
+#Desired fluxspectra:
+[spectrum]
+type = 'PhysicalBalancedRatio'
+ratio = 0.5
+#columns = ['energy','coszenith']
+#bins = [50,20,210]
+#flattening_method = 'Descrete_wo_run'
+
